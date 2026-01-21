@@ -1,7 +1,5 @@
 const url = "https://icanhazdadjoke.com";
 
-// const responseList = [];
-
 async function requestJoke(endpoint) {
   try {
     let response = await fetch(endpoint, {
@@ -43,18 +41,6 @@ async function addJoke(joke) {
   });
 }
 
-// async function initInput() {
-//   let input = document.querySelector(".joke-choice");
-//   let joke;
-//   do {
-//     joke = await requestJoke(url);
-//     console.log(joke);
-//   } while (responseList.includes(joke));
-//   responseList.concat([joke]);
-//   console.log(responseList);
-//   input.setAttribute("value", joke);
-// }
-
 async function init() {
   let initJoke = await requestJoke(url);
   document.querySelector(".joke").innerHTML = initJoke;
@@ -65,5 +51,3 @@ async function init() {
 }
 
 init();
-
-// initInput();
