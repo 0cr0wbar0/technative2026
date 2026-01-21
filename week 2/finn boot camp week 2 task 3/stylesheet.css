@@ -1,0 +1,7 @@
+@import "global.css";
+@import "layout.css";
+@import "./modules/header.css";
+@import "./modules/nav.css";
+@import "./modules/card.css";
+@import "./modules/table.css";
+@import "./modules/btn.css";

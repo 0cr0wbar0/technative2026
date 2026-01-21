@@ -1,0 +1,48 @@
+.table {
+  margin: 10px auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  --border: 0.1em solid grey;
+}
+
+/* border all table rows */
+.table tr {
+  border-top: var(--border);
+  border-bottom: var(--border);
+  text-align: left;
+}
+
+/* small uppercase styling for column labels */
+.table th {
+  font-weight: normal;
+  font-size: small;
+  text-transform: uppercase;
+}
+
+/* all table cells */
+.table :is(td, th) {
+  padding: 0.25em;
+}
+
+/* every second child in a table row: every name is bold */
+.table td:nth-child(2) {
+  font-weight: bold;
+}
+
+/* the last table cell in each row has a visible border on the left */
+.table :is(th, td):last-child {
+  border-left: var(--border);
+}
+
+.table button {
+  border-radius: 1em;
+  background: lightgrey;
+  border-style: outset;
+  padding: 0.3em 1.5em;
+  /* make button text capitalized and bold*/
+}
+
+.table button:active {
+  border-style: inset;
+}

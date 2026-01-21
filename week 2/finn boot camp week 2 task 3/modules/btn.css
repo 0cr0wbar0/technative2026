@@ -1,0 +1,9 @@
+.btn {
+  background-color: black;
+  color: var(--colour-accent);
+  padding: 0.5em 1em;
+  font-size: medium;
+  text-decoration: none;
+  align-self: flex-start;
+  border: none;
+}

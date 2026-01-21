@@ -1,0 +1,11 @@
+:root {
+  --page-width: 40rem;
+  --card-width: 30rem;
+  --colour-accent: gold;
+  --font: sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: var(--font);
+}

@@ -1,0 +1,63 @@
+:root {
+  box-sizing: border-box;
+  background-color: lightgreen;
+  font-family: "Comic Sans MS";
+}
+
+@font-face {
+  font-family: "Comic Sans MS";
+  src: url("COMIC.TTF");
+}
+
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+header,
+main,
+footer {
+  background-color: darkolivegreen;
+  color: lightgreen;
+  border-radius: 2rem;
+  padding: 1rem;
+  margin: 0.5rem;
+  object-fit: cover;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table {
+  border: 0.3em solid lightgreen;
+  border-radius: 0.2em;
+}
+
+table {
+  align-self: center;
+}
+
+thead tr {
+  min-width: 20rem;
+}
+
+footer * {
+  margin: 0.5em 0;
+}
+
+.joke-list {
+  list-style: none;
+}
+
+footer form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

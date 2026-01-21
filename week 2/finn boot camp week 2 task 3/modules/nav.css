@@ -1,0 +1,27 @@
+.nav {
+  align-self: flex-end;
+}
+
+.nav > ul {
+  list-style: none;
+  display: flex;
+  column-gap: 1em;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__item {
+  display: flex;
+}
+
+.nav__item a {
+  background-color: var(--colour-accent);
+  color: black;
+  padding: 0.5em 0.75em;
+  text-decoration: none;
+}
+
+.nav__item_active a {
+  background-color: black;
+  color: var(--colour-accent);
+}

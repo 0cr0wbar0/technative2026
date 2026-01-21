@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <script defer src="api.js"></script>
+    <title>Dad Joke Rank-inator 1000!</title>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to the Dad Joke Rank-inator 1000!</h1>
+    </header>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Rating</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style="background-color: red; color: white">S</th>
+            <td><ul class="S-joke-list"></ul></td>
+          </tr>
+          <tr>
+            <th style="background-color: orange; color: black">A</th>
+            <td><ul class="A-joke-list"></ul></td>
+          </tr>
+          <tr>
+            <th style="background-color: yellow; color: black">B</th>
+            <td><ul class="B-joke-list"></ul></td>
+          </tr>
+          <tr>
+            <th style="background-color: lightgreen; color: black">C</th>
+            <td><ul class="C-joke-list"></ul></td>
+          </tr>
+          <tr>
+            <th style="background-color: darkgreen; color: white">D</th>
+            <td><ul class="D-joke-list"></ul></td>
+          </tr>
+          <tr>
+            <th style="background-color: mediumblue; color: white">F</th>
+            <td><ul class="F-joke-list"></ul></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+    <footer>
+      <label for="joke">How would you rate the following joke?</label>
+      <p class="joke"></p>
+      <select name="rating" class="rating">
+        <option value="S">S</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="F">F</option>
+      </select>
+      <button type="submit">Submit</button>
+    </footer>
+  </body>
+</html>

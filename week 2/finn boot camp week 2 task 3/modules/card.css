@@ -1,0 +1,65 @@
+.card {
+  padding: 1em;
+  max-width: var(--card-width);
+  border-bottom: 0.75em solid black;
+  h2 {
+    margin: 0;
+  }
+}
+
+.card_left {
+  align-self: flex-start;
+}
+
+.card_right {
+  align-self: flex-end;
+}
+
+.card_centre {
+  align-self: center;
+}
+
+.card_white {
+  background-color: whitesmoke;
+}
+
+.card_grey {
+  background-color: lightgray;
+}
+
+.card_media {
+  padding: 0;
+  border: 0.75em solid black;
+  img {
+    display: flex;
+    object-fit: cover;
+    height: 20em;
+    width: 100%;
+  }
+}
+
+.card__twocol {
+  display: flex;
+  column-gap: 0.5em;
+}
+
+.card__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.card__form label {
+  font-size: smaller;
+}
+
+.card__form :is(input[type="text"], textarea) {
+  font-size: medium;
+  font-family: var(--font);
+  padding: 0.75em;
+  margin-bottom: 1em;
+}
+
+.card__form textarea {
+  resize: none;
+  height: 8em;
+}
