@@ -1,3 +1,6 @@
 .DS_Store
 /test
 /archives
+.idea
+node_modules
+.env

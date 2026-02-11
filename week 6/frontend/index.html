@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheet.css" />
+    <title>API</title>
+  </head>
+  <body>
+    <h1>API</h1>
+    <div></div>
+    <form
+      method="post"
+      action="http://localhost:3000/upload"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="uploadImage" id="uploadImage" accept="image/*" />
+      <button type="submit">Upload image</button>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>
