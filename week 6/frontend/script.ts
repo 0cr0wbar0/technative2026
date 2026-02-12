@@ -6,9 +6,24 @@ async function res(url: URL): Promise<String> {
   return json.response;
 }
 
+function toggleCookie(): void {
+  let paragraph = document.getElementById(
+    "toggle-message",
+  ) as HTMLParagraphElement;
+  if (!document.cookie) {
+    document.cookie = "Admin=True";
+    paragraph.innerText = "You are now admin!";
+  } else {
+    document.cookie += `; expires=Thu, 01 Jan 1970 00:00:00 GMT;`;
+    paragraph.innerText = "You are no longer admin!";
+  }
+}
+
 async function init() {
   let result: String = await res(src);
-  document.querySelector("div").insertAdjacentHTML("beforeend", result.toString());
+  document
+    .querySelector("div")
+    .insertAdjacentHTML("beforeend", result.toString());
 
   let form: HTMLFormElement = document.querySelector("form");
   let input: HTMLInputElement = document.querySelector("form > input");
@@ -22,13 +37,23 @@ async function init() {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    let file: File = (document.getElementById("uploadImage") as HTMLInputElement).files[0];
+    let file: File = (
+      document.getElementById("uploadImage") as HTMLInputElement
+    ).files[0];
     const formData = new FormData();
-    formData.append('file', file, file.name);
-    let response: Response = await fetch(src + "upload", {method: "POST", body: formData });
+    formData.append("file", file, file.name);
+    let response: Response = await fetch(src + "upload", {
+      method: "POST",
+      body: formData,
+    });
     let json = await response.json();
-    document.querySelector("body").insertAdjacentHTML("beforeend", "<p>" + json.filename.filename + " uploaded successfully!</p>");
-  })
+    document
+      .querySelector("body")
+      .insertAdjacentHTML(
+        "beforeend",
+        "<p>" + json.filename.filename + " uploaded successfully!</p>",
+      );
+  });
 }
 
 init();
