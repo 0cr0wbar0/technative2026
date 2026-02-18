@@ -1,5 +1,14 @@
 const src: URL = new URL("/", "http://localhost:3000");
 
+let uploadForm = document.getElementById("upload-form") as HTMLFormElement;
+let uploadInput = document.querySelector(
+  "#upload-form input",
+) as HTMLInputElement;
+let deleteSelect = document.getElementById("deleteImage") as HTMLSelectElement;
+let deleteButton = document.getElementById(
+  "delete-submit",
+) as HTMLButtonElement;
+
 async function res(url: URL): Promise<any> {
   try {
     let response: Response = await fetch(url);
@@ -26,25 +35,32 @@ async function res(url: URL): Promise<any> {
 async function init() {
   let results = await res(src);
   for (let i = 0; i < Object.keys(results).length; i++) {
+    let receivedImage = results[`image-${i}`];
+    let imageName = new URL(receivedImage).pathname.split("/").pop();
     document
       .querySelector("div")
       .insertAdjacentHTML(
         "beforeend",
-        "<img src=" + results[`image-${i}`] + " height=200px>",
+        "<div><img src=" +
+          receivedImage +
+          " height=200px><p>" +
+          imageName +
+          "</p></div>",
       );
+    let imageInMenu = document.createElement("option");
+    imageInMenu.text = imageName;
+    imageInMenu.value = imageName;
+    deleteSelect.add(imageInMenu);
   }
 
-  let form: HTMLFormElement = document.querySelector("form");
-  let input: HTMLInputElement = document.querySelector("form > input");
-
-  input.addEventListener("change", (event) => {
+  uploadInput.addEventListener("change", (event) => {
     const file: File = (event.target as HTMLInputElement).files[0];
     console.log(`filename: ${file.name}`);
     console.log(`file size: ${file.size} bytes`);
     console.log(`file type: ${file.type}`);
   });
 
-  form.addEventListener("submit", async (e) => {
+  uploadForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     let file: File = (
       document.getElementById("uploadImage") as HTMLInputElement
@@ -62,6 +78,16 @@ async function init() {
         "beforeend",
         "<p>" + json.filename.filename + " uploaded successfully!</p>",
       );
+  });
+
+  deleteButton.addEventListener("click", async (e) => {
+    let toDelete = deleteSelect.selectedOptions[0].value;
+    let deleteResponse: Response = await fetch(src + "static/" + toDelete, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json; charset=UTF-8" },
+    });
+    let json = await deleteResponse.json();
+    console.log(JSON.stringify(json));
   });
 }
 

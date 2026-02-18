@@ -8,20 +8,20 @@
   </head>
   <body>
     <h1>API</h1>
-    <div></div>
+    <div class="images"></div>
     <!-- <button id="toggle" onclick="toggleCookie()">Toggle Magic Cookie!</button> -->
     <p id="toggle-message"></p>
     <form
+      id="upload-form"
       method="post"
       action="http://localhost:3000/upload"
       enctype="multipart/form-data"
     >
       <input type="file" name="uploadImage" id="uploadImage" accept="image/*" />
-      <button type="submit">Upload image</button>
+      <button id="upload-button" type="submit">Upload image</button>
     </form>
-    <!-- <form method="delete" action="http://localhost:3000/remove">
-      <input type="text" name="deleteImage" id="deleteImage" />
-    </form> -->
+    <select name="deleteImage" id="deleteImage"></select>
+    <button id="delete-submit" type="submit">Delete image</button>
     <script src="script.js"></script>
   </body>
 </html>

@@ -19,7 +19,6 @@ const port = process.env.PORT;
 const { Client } = postgres;
 
 app.get("/", async (req, res) => {
-  console.log("connection received!");
   res.statusCode = 200;
 
   const client = new Client({
@@ -63,7 +62,7 @@ app.post("/upload", (req, res) => {
       throw new Error("File already exists in database!");
     }
 
-    const saveTo = path.join("./public", `${filename.filename}`);
+    const saveTo = path.join("./public", filename.filename);
     await new Promise((resolve, reject) => {
       file.pipe(
         fs.createWriteStream(saveTo, (error) => {
@@ -92,6 +91,31 @@ app.post("/upload", (req, res) => {
   req.busboy.on("close", () => {
     res.status(200).send(serverResponse);
   });
+});
+
+app.delete("/static/:file", async (req, res) => {
+  let toDelete = req.params.file;
+  console.log(toDelete);
+
+  fs.unlink(path.join("./public", toDelete), (err) => {
+    if (err) {
+      throw err;
+    }
+    console.log(`deleted file: ${toDelete}`);
+  });
+
+  let deleteClient = new Client({
+    connectionString: process.env.DATABASE_URL,
+  });
+  await deleteClient.connect();
+
+  await deleteClient.query('delete from "Images" where "file_path" = $1', [
+    toDelete,
+  ]);
+
+  await deleteClient.end();
+
+  res.status(200).send({ response: "OK" });
 });
 
 app.listen(port, () => {
