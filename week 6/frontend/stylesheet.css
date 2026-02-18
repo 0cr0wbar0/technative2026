@@ -13,6 +13,16 @@ form {
   justify-content: center;
 }
 
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div > img {
+  margin: 1rem;
+}
+
 header,
 main,
 footer {
