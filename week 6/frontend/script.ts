@@ -36,7 +36,7 @@ async function init() {
   let results = await res(src);
   for (let i = 0; i < Object.keys(results).length; i++) {
     let receivedImage = results[`image-${i}`];
-    let imageName = new URL(receivedImage).pathname.split("/").pop();
+    let imageName: string = new URL(receivedImage).pathname.split("/").pop();
     document
       .querySelector("div")
       .insertAdjacentHTML(
@@ -47,7 +47,7 @@ async function init() {
           imageName +
           "</p></div>",
       );
-    let imageInMenu = document.createElement("option");
+    let imageInMenu: HTMLOptionElement = document.createElement("option");
     imageInMenu.text = imageName;
     imageInMenu.value = imageName;
     deleteSelect.add(imageInMenu);

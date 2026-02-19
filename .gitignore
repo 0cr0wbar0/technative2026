@@ -6,4 +6,5 @@ node_modules
 .env
 /week 3/finn boot camp week 3 task 1/*.js
 /week 6/frontend/*.js
-/week 6/backend/public
+/week 6/backend/public/*
+!/week 6/backend/public/.gitkeep
