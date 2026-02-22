@@ -33,7 +33,7 @@ app.get("/", async (req, res) => {
   for (let i = 0; i < result.rows.length; i++) {
     responseMap.set(
       `image-${i}`,
-      "http://localhost:3000/static/" + result.rows[i].file_path,
+      `http://localhost:${port}/static/` + result.rows[i].file_path,
     );
   }
 
@@ -63,14 +63,12 @@ app.post("/upload", (req, res) => {
     }
 
     const saveTo = path.join("./public", filename.filename);
-    await new Promise((resolve, reject) => {
-      file.pipe(
-        fs.createWriteStream(saveTo, (error) => {
-          reject(error);
-        }),
-      );
-      resolve();
-    });
+
+    file.pipe(
+      fs.createWriteStream(saveTo).on("error", (err) => {
+        throw err;
+      }),
+    );
 
     await saveFileClient.query(
       'insert into "Images" ("file_path") values ($1)',
@@ -95,14 +93,9 @@ app.post("/upload", (req, res) => {
 
 app.delete("/static/:file", async (req, res) => {
   let toDelete = req.params.file;
-  console.log(toDelete);
 
-  fs.unlink(path.join("./public", toDelete), (err) => {
-    if (err) {
-      throw err;
-    }
-    console.log(`deleted file: ${toDelete}`);
-  });
+  fs.unlinkSync(path.join("./public", toDelete));
+  console.log(`successfully deleted ${toDelete}`);
 
   let deleteClient = new Client({
     connectionString: process.env.DATABASE_URL,

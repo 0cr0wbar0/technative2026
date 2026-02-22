@@ -81,7 +81,7 @@ async function init() {
   });
 
   deleteButton.addEventListener("click", async (e) => {
-    let toDelete = deleteSelect.selectedOptions[0].value;
+    let toDelete: string = deleteSelect.selectedOptions[0].value;
     let deleteResponse: Response = await fetch(src + "static/" + toDelete, {
       method: "DELETE",
       headers: { "Content-Type": "application/json; charset=UTF-8" },
