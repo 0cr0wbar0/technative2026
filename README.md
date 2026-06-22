@@ -8,3 +8,4 @@ This repository contains, week by week, my work for TechNative's January 2026 Te
 ### [Week 4: Simple web dev pair project](https://github.com/technative-academy/fanime-website)
 ### [Week 5: Web dev 3-person project](https://github.com/technative-academy/ai-destroyer)
 ### [Weeks 6-7: Node.js + Express.js practice](https://github.com/0cr0wbar0/technative2026/tree/main/week%206)
+### [Weeks 8-10: Full-stack social media app](https://github.com/technative-academy/hikespace)
