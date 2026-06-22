@@ -22,10 +22,11 @@ main,
 footer {
   background-color: darkolivegreen;
   color: lightgreen;
-  border-radius: 2rem;
+  border-radius: 1rem;
   padding: 1rem;
   margin: 0.5rem;
   object-fit: cover;
+  box-shadow: 0.4rem 0.4rem black;
 }
 
 footer {
